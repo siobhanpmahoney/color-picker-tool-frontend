@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from './Form'
 import ColorList from './ColorList'
-import {fetchColors} from '../service'
+import {fetchColors, createColor} from '../service'
 
 class Main extends React.Component {
 
@@ -15,14 +15,22 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchColors()
+    this.onFetchColors()
   }
 
-  fetchColors = () => {
+  onFetchColors = () => {
     fetchColors()
     .then(json => this.setState({
       colors: json
     }))
+  }
+
+  onCreateColor = (color_data) => {
+    let colorState = this.state.colors.slice(0)
+    createColor(color_data)
+    .then(json => this.setState({
+      colors: [...colorState, json]
+    }, this.onToggleForm))
   }
 
   onToggleForm = () => {
@@ -38,17 +46,21 @@ class Main extends React.Component {
           Project Color Picker
         </h2>
 
-        <h4>
-          Colors
 
-          <button onClick={this.onToggleForm} className='new-color-form-button'>
-             +
-           </button>
-        </h4>
 
         {!!this.state.isRenderingForm ? (
-          <Form />
-        ) : null}
+          <Form color="new" onCreateColor={this.onCreateColor}/>
+        ) : (
+          <div className='header'>
+            <h4>
+              Colors
+
+              <button onClick={this.onToggleForm} className='new-color-form-button'>
+                +
+              </button>
+            </h4>
+          </div>
+        )}
 
 
         {!this.state.colors ? (
