@@ -1,32 +1,86 @@
+* {
+  font-family: 'SF Pro Text';
+}
+
+html, body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
 .App {
-  text-align: center;
+  margin: 12px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.App, .main {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.new-color-form-button {
+  margin: 6px;
+  padding: 3px 6px;
+  width: 24px;
+  border-radius: 2px;
+}
+
+
+.color-list-wrapper {
+  position: relative;
+  height: 100%;
+  weight: 100%;
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.color-entry-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin: 6px;
+  padding: 12px 0px 4px 0px;
+  border-bottom: 1px solid lightslategray;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
 }
 
-.App-link {
-  color: #61dafb;
+.color-star, .color-square, .color-hex, .color-group, .color-website-placement {
+  position: relative;
+  display: inline-flex;
+  /* align-items: flex-start; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.color-star, .color-square {
+    margin: 0px 18px;
+}
+
+.color-hex, .color-group, .color-website-placement, .color-status, .color-edit {
+  min-width: 15px;
+  max-width: 30%;
+  flex: 0 1 10%;
+  margin: 0px 12px;
+}
+
+button.color-edit-button {
+  height: 32px;
+  width: 36px;
+  padding: 2px;
+  border-radius: 3px;
+  background: none;
+  display: none;
+}
+
+.color-entry-wrapper:hover button.color-edit-button {
+  display:inline;
+}
+
+
+.color-square {
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  border-radius: 4px;
+  margin: 0px 4px;
 }
