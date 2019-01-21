@@ -1,18 +1,34 @@
 import React from 'react'
-
-// const props_color = {
-//   t.string :hex
-//   t.string :group
-//   t.boolean :starred
-//   t.string :website_placement
-//   t.string :status
-//   t.text :notes
-//   t.boolean :as_gradient
-//   t.string :gradient_css
-// }
+import Form from './Form'
 
 
 class ColorEntry extends React.Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isRenderingForm: false
+    }
+  }
+
+  onToggleForm = () => {
+    let val = !this.state.isRenderingForm
+
+    this.setState({
+      isRenderingForm: val
+    })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.color != this.props.color) {
+      this.onToggleForm()
+    }
+  }
+
+
+
+
 
   render() {
     const {color} = this.props
@@ -47,7 +63,7 @@ class ColorEntry extends React.Component {
         )}
 
 
-        
+
         <div className='color-group'>
           {color.group}
         </div>
@@ -60,15 +76,24 @@ class ColorEntry extends React.Component {
           <span className={color.status}>{color.status}</span>
         </div>
 
-        <div className='color-edit'>
-          <button className='color-edit-button'>
-            edit
-          </button>
-        </div>
+        {!this.state.isRenderingForm ? (
+          <div className='color-edit'>
+            <button className='color-edit-button' onClick={this.onToggleForm}>
+              edit
+            </button>
+          </div>
+        ) : (
+          <div className='color-entry-form-container'>
+            <Form onSaveColor={this.props.onUpdateColor} color={color}/>
+          </div>
+        )
 
-      </div>
-    )
-  }
+      }
+    </div>
+  )
 }
+}
+
+
 
 export default ColorEntry

@@ -4,15 +4,23 @@ class Form extends React.Component {
   constructor(props) {
     super(props)
 
+
     this.state = {
+      id: null,
       hex: "",
       starred: false,
       group: "",
       as_gradient: false,
-      gradient_css: "",
       website_placement: "",
       status: "",
       notes: ""
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.color != "new") {
+      const {color} = this.props
+      this.setState(color)
     }
   }
 
@@ -21,13 +29,11 @@ class Form extends React.Component {
     let val = event.target.type === 'checkbox' ? event.target.checked : event.target.value
     this.setState({
       [field]: val
-    }, console.log(this.state))
+    })
   }
 
   onSaveColor = () => {
-    if (this.props.color === "new") {
-      this.props.onCreateColor(this.state)
-    }
+    this.props.onSaveColor(this.state)
   }
 
   render() {
@@ -47,7 +53,7 @@ class Form extends React.Component {
             </label>
           </div>
 
-          {!!this.state.as_gradient ? (
+{/*          {!!this.state.as_gradient ? (
             <div className='field'>
               <label>
                 <h4>
@@ -59,7 +65,7 @@ class Form extends React.Component {
                 </h4>
               </label>
             </div>
-          ): (
+          ): ( */}
             <div className='field'>
               <label>
                 <h4>
@@ -71,8 +77,8 @@ class Form extends React.Component {
                 </h4>
               </label>
             </div>
-          )
-        }
+    {/*      )
+    }*/}
 
         <div className='field'>
           <label>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from './Form'
 import ColorList from './ColorList'
-import {fetchColors, createColor} from '../service'
+import {fetchColors, createColor, updateColor} from '../service'
 
 class Main extends React.Component {
 
@@ -33,6 +33,23 @@ class Main extends React.Component {
     }, this.onToggleForm))
   }
 
+  onUpdateColor = (color_data) => {
+    
+    let colorState = this.state.colors.slice(0)
+    updateColor(color_data)
+    .then(json => {
+      let idx = colorState.indexOf(colorState.find((c) => c.id === color_data.id))
+
+      this.setState({
+        colors: [...colorState.slice(0, idx), json,...colorState.slice(idx+1)]
+      })
+    })
+  }
+
+
+
+
+
   onToggleForm = () => {
     this.setState({
       isRenderingForm: !this.state.isRenderingForm
@@ -49,7 +66,7 @@ class Main extends React.Component {
 
 
         {!!this.state.isRenderingForm ? (
-          <Form color="new" onCreateColor={this.onCreateColor}/>
+          <Form color="new" onSaveColor={this.onCreateColor}/>
         ) : (
           <div className='header'>
             <h4>
@@ -66,7 +83,7 @@ class Main extends React.Component {
         {!this.state.colors ? (
           <div>Loading...</div>
         ) : (
-          <ColorList colors={this.state.colors} />
+          <ColorList onUpdateColor={this.onUpdateColor} colors={this.state.colors} />
         )}
       </div>
     )
