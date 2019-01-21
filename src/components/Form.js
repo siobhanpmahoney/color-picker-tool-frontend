@@ -56,20 +56,21 @@ class Form extends React.Component {
   render() {
     return (
       <div className='form-container'>
-        <button onClick={this.onClearAndCloseForm}>
+        <button className='form-close-button' onClick={this.onClearAndCloseForm}>
           close
         </button>
-        <h3 className='form-header'>Add New Color </h3>
         <div className='form-wrapper'>
+          <div className='form-col-wrapper'>
+          <div className='form-col-1'>
           <div className='field'>
             <label>
-              <h4>
+              <div className='form-field-label'>
                 <span className='form-field-label'>
                   Gradient?
                 </span>
 
                 <input type='checkbox' name='as_gradient' checked={this.state.as_gradient} onChange={this.onUpdateField} />
-              </h4>
+</div>
             </label>
           </div>
 
@@ -88,13 +89,13 @@ class Form extends React.Component {
           ): ( */}
             <div className='field'>
               <label>
-                <h4>
-                  <span className='form-field-label'>
+
+                  <div className='form-field-label'>
                     Hex:
-                  </span>
+
 
                   <input type='text' name='hex' value={this.state.hex} onChange={this.onUpdateField} />
-                </h4>
+                </div>
               </label>
             </div>
     {/*      )
@@ -102,24 +103,26 @@ class Form extends React.Component {
 
         <div className='field'>
           <label>
-            <h4>
-              <span className='form-field-label'>
+
+              <div className='form-field-label'>
                 Star?
-              </span>
+
               <input type='checkbox' name='starred' checked={this.state.starred} onChange={this.onUpdateField} />
-            </h4>
+                  </div>
           </label>
         </div>
 
-
+</div>
+<div className='form-col-2'>
 
         <div className='field'>
           <label>
-            <h4>
-              <span className='form-field-label'>
-                Color Group:
-              </span>
+            <div className='form-field-label'>
+                Color Group
+
+                    </div>
               <select value={this.state.group} name='group' onChange={this.onUpdateField}>
+                <option value="">select...</option>
                 <option value="red">red</option>
                 <option value="orange">orange</option>
                 <option value="yellow">yellow</option>
@@ -131,18 +134,19 @@ class Form extends React.Component {
                 <option value="grey">grey</option>
                 <option value="black">black</option>
               </select>
-            </h4>
+
           </label>
         </div>
 
 
         <div className='field'>
           <label>
-            <h4>
-              <span className='form-field-label'>
-                Usage:
-              </span>
+
+              <div className='form-field-label'>
+                Usage
+              </div>
               <select value={this.state.website_placement} name='website_placement' onChange={this.onUpdateField}>
+                <option value="">select...</option>
                 <option value="background">background</option>
                 <option value="text">text</option>
                 <option value="highlight">highlight</option>
@@ -150,41 +154,45 @@ class Form extends React.Component {
                 <option value="primary">primary</option>
                 <option value="other">other</option>
               </select>
-            </h4>
+
           </label>
         </div>
 
 
         <div className='field'>
           <label>
-            <h4>
-              <span className='form-field-label'>
-                Status:
-              </span>
+
+              <div className='form-field-label'>
+                Status
+              </div>
 
               <select value={this.state.status} name='status' onChange={this.onUpdateField}>
-                <option value="final">Final</option>
-                <option value="considering">Considering</option>
+                <option value="">select...</option>
+                <option value="final">final</option>
+                <option value="considering">considering</option>
                 <option value="recycled">recycled</option>
               </select>
-            </h4>
 
 
           </label>
         </div>
 
+        </div>
+
+<div className='form-col-3'>
         <div className='field'>
           <label>
-            <h4>
-              <span className='form-field-label'>
-                Notes:
-              </span>
+
+              <div className='form-field-label'>
+                Notes
+              </div>
 
               <textarea type='text' name='notes' value={this.state.notes} onChange={this.onUpdateField} />
-            </h4>
+
           </label>
         </div>
-
+        </div>
+      </div>
         <div className='field'>
           <h4>
             <button onClick={this.onSaveColor} className='form-button save-color-button'>
@@ -192,7 +200,7 @@ class Form extends React.Component {
             </button>
 
             {this.props.color != "new" &&
-              <button onClick={this.onDeleteColor} className='form-button save-color-button'>
+              <button onClick={this.onDeleteColor} className='form-button delete-color-button'>
                 delete
               </button>
             }

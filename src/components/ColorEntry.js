@@ -30,6 +30,7 @@ class ColorEntry extends React.Component {
 
 
 
+
   render() {
     const {color} = this.props
     return (
