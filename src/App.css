@@ -18,12 +18,33 @@ html, body {
   width: 100%;
 }
 
-.new-color-form-button {
-  margin: 6px;
-  padding: 3px 6px;
-  width: 24px;
-  border-radius: 2px;
+.control-panel-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  box-shadow: 0 2px 18px rgba(52,37,214,0.08);
+  margin: 16px;
+  padding: 16px;
+  align-items: flex-start;
 }
+
+.sort-select {
+  position: relative;
+  width: 25%;
+  margin: 6px;
+}
+
+.filter-wrapper {
+  width: 65%;
+
+
+
+}
+
+
 
 
 .color-list-wrapper {
@@ -65,41 +86,6 @@ html, body {
   font-size: 80%;
 }
 
-button.color-edit.button {
-    display: none;
-}
-
-button.color-edit-button, .form-close-button {
-  background: white;
-  border: lightgrey 1px solid;
-  color: grey;
-}
-
-.color-entry-wrapper:hover button.color-edit-button {
-  display:inline;
-}
-
-.save-color-button {
-  background: #0FC190;
-  border: #0FC190 1.25px solid;
-  color: white;
-  font-weight: 450;
-}
-
-.delete-color-button {
-  background: #FF6280;
-  border: #FF6280 1.25px solid;
-  color: white;
-  font-weight: 450;
-}
-
-.save-color-button, .color-edit-button, .delete-color-button, .form-close-button {
-  height: 32px;
-  width: 60px;
-  padding: 2px;
-  border-radius: 3px;
-  margin: 6px;
-}
 
 
 .color-square {
@@ -165,7 +151,7 @@ button.color-edit-button, .form-close-button {
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 0.5px;
-  margin: 12px 2px 3px 0px;
+  margin: 8px 2px 3px 0px;
 }
 
 
@@ -173,6 +159,7 @@ button.color-edit-button, .form-close-button {
 select {
   font-family: 'Open Sans' !important;
   width: 75%;
+  min-width: max-content;
   padding: 1px;
   margin: 0px 3px;
   display: inline-flex;
@@ -209,4 +196,47 @@ textarea {
 
 option {
   font-family: 'Open Sans' !important;
+}
+
+.new-color-form-button {
+  margin: 6px;
+  padding: 3px 6px;
+  width: 24px;
+  border-radius: 2px;
+}
+
+button.color-edit.button {
+    display: none;
+}
+
+button.color-edit-button, .form-close-button {
+  background: white;
+  border: lightgrey 1px solid;
+  color: grey;
+}
+
+.color-entry-wrapper:hover button.color-edit-button {
+  display:inline;
+}
+
+.save-color-button {
+  background: #0FC190;
+  border: #0FC190 1.25px solid;
+  color: white;
+  font-weight: 450;
+}
+
+.delete-color-button {
+  background: #FF6280;
+  border: #FF6280 1.25px solid;
+  color: white;
+  font-weight: 450;
+}
+
+.save-color-button, .color-edit-button, .delete-color-button, .form-close-button {
+  height: 32px;
+  width: 60px;
+  padding: 2px;
+  border-radius: 3px;
+  margin: 6px;
 }

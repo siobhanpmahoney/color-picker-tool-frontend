@@ -48,21 +48,16 @@ class ColorEntry extends React.Component {
           )}
         </div>
 
-        <div className='color-square' style={!!color.as_gradient ? {background: `${color.gradient_css}`} : {background: `${color.hex}`}} />
+        <div className='color-square' style={{background: `${color.hex}`}} />
 
 
 
 
-        {!!color.as_gradient ? (
-          <div className='color-hex'>
-            {color.gradient_css}
-          </div>
-        ) : (
+
           <div className='color-hex'>
             {color.hex}
           </div>
-        )}
-
+  
 
 
         <div className='color-group'>
