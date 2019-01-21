@@ -1,5 +1,5 @@
 * {
-  font-family: 'Open Sans';
+  font-family: 'Asap';
 }
 
 html, body {
@@ -22,6 +22,8 @@ html, body {
   position: relative;
   width: 100%;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   flex: 1 1 auto;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -29,23 +31,53 @@ html, body {
   margin: 16px;
   padding: 16px;
   align-items: flex-start;
+  justify-content: space-around;
+
 }
 
-.sort-select {
+.sort-select, .filter-container {
   position: relative;
-  width: 25%;
   margin: 6px;
 }
 
-.filter-wrapper {
+.sort-select {
+  width: 25%;
+}
+
+.filter-container {
   width: 65%;
-
-
 
 }
 
+.filter-wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+  justify-content: space-around;
+}
 
+.filter-section-bool, .filter-section-reg {
+  width: 50%;
+  position: relative;
+}
 
+.filter-field-label {
+  font-size: 13px;
+  font-weight: 460;
+  line-height: 18px;
+  margin: 3px 0px;
+  position: relative;
+
+}
+
+.header {
+  font-size: 18px;
+  color: white;
+  background:#c4d5d5;
+  position: sticky;
+  top: 0;
+  align-items: center
+}
 
 .color-list-wrapper {
   position: relative;
@@ -157,7 +189,7 @@ html, body {
 
 
 select {
-  font-family: 'Open Sans' !important;
+  font-family: 'Asap' !important;
   width: 75%;
   min-width: max-content;
   padding: 1px;
@@ -182,7 +214,7 @@ input[type='text'] {
 }
 
 textarea {
-  font-family: 'Open Sans' !important;
+  font-family: 'Asap' !important;
   width: 96%;
   padding: 3px;
   margin: 0px 3px;
@@ -195,7 +227,7 @@ textarea {
 }
 
 option {
-  font-family: 'Open Sans' !important;
+  font-family: 'Asap' !important;
 }
 
 .new-color-form-button {
@@ -206,7 +238,7 @@ option {
 }
 
 button.color-edit.button {
-    display: none;
+  display: none;
 }
 
 button.color-edit-button, .form-close-button {

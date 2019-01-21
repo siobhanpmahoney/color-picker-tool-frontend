@@ -54,52 +54,61 @@ const ControlPanel = (props) => {
         </select>
       </div>
 
-      <div className='filter-wrapper'>
+      <div className='filter-container'>
         <div className='form-field-label'>
           Filters
         </div>
 
-        <div className='filter-section-bool'>
-          <div className='filter-field-select'>
-            <div className='filter-field-label'>
-              Color Type
+
+        <div className='filter-wrapper'>
+          <div className='filter-section-bool'>
+            <div className='filter-field-select'>
+
+
+              <select value={props.filters.starred} name='starred' onChange={props.onSelectFilter}>
+                <option value="">Stars..</option>
+                <option value={true}>Starred</option>
+                <option value={false}>Unstarred</option>
+              </select>
             </div>
 
-            <select value={props.filters.as_gradient} name='as_gradient' onChange={props.onSelectFilter}>
-              <option value="">Select..</option>
-              <option value={false}>Solid</option>
-              <option value={true}>Gradient</option>
-            </select>
+            <div className='filter-field-select'>
+
+              <select value={props.filters.as_gradient} name='as_gradient' onChange={props.onSelectFilter}>
+                <option value="">Color Type..</option>
+                <option value={false}>Solid</option>
+                <option value={true}>Gradient</option>
+              </select>
+            </div>
+          </div>
+
+          <div className='filter-section-reg'>
+            {Object.keys(filters).map((f) => {
+              if (f != 'as_gradient') {
+                return (
+                  <div key={f} className='filter-field-select'>
+                    
+                    <select value={props.filters[f]} name={f} onChange={props.onSelectFilter}>
+                      <option value=''>{filters[f].label}..</option>
+                      {filters[f].options.map((o) => {
+                        return (
+                          <option key={o} value={o}>
+                            {o}
+                          </option>
+                        )
+                      })}
+                    </select>
+
+                  </div>
+                )
+              }
+
+            })}
           </div>
         </div>
-
-        <div className='filter-section-reg'>
-          {Object.keys(filters).map((f) => {
-            if (f != 'as_gradient') {
-              return (
-                <div key={f} className='filter-field-select'>
-                  <div className='filter-field-label'>
-                    {filters[f].label}
-                  </div>
-
-                  <select value={props.filters[f]} name={f} onChange={props.onSelectFilter}>
-                    <option value=''>Select..</option>
-                    {filters[f].options.map((o) => {
-                      return (
-                        <option key={o} value={o}>
-                          {o}
-                        </option>
-                      )
-                    })}
-                  </select>
-
-                </div>
-              )
-            }
-
-          })}
-        </div>
       </div>
+
+
     </div>
   )
 }
