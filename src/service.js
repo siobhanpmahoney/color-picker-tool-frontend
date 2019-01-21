@@ -1,4 +1,5 @@
 const index_url = 'http://localhost:3000/api/v1/colors'
+const color_url = (id) => `http://localhost:3000/api/v1/colors/${id}`
 
 export const fetchColors = () => {
   return fetch(index_url)
@@ -20,8 +21,6 @@ export const createColor = (data) => {
 
 export const updateColor = (data) => {
   let url = `http://localhost:3000/api/v1/colors/${data.id}`
-  console.log("url: ", url)
-  console.log("update data: ", data)
   return fetch(url, {
     method: 'PATCH',
     headers: {
@@ -31,4 +30,14 @@ export const updateColor = (data) => {
     body: JSON.stringify(data)
   })
   .then(response=>response.json())
+}
+
+
+
+export const deleteColor = (data) => {
+  let url = color_url(data.id)
+  return fetch(url, {
+    method: 'DELETE'
+  })
+  .then(response => response.json())
 }

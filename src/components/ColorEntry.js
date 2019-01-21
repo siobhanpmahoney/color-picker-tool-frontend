@@ -84,7 +84,7 @@ class ColorEntry extends React.Component {
           </div>
         ) : (
           <div className='color-entry-form-container'>
-            <Form onSaveColor={this.props.onUpdateColor} color={color}/>
+            <Form onSaveColor={this.props.onUpdateColor} onDeleteColor={this.props.onDeleteColor} color={color}/>
           </div>
         )
 

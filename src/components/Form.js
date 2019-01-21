@@ -36,6 +36,10 @@ class Form extends React.Component {
     this.props.onSaveColor(this.state)
   }
 
+  onDeleteColor = () => {
+    this.props.onDeleteColor(this.state)
+  }
+
   render() {
     return (
       <div className='form-container'>
@@ -171,9 +175,15 @@ class Form extends React.Component {
               Save
             </button>
 
-            <button className='form-button save-color-button'>
-              delete
-            </button>
+            {this.props.color != "new" &&
+              <button onClick={this.onDeleteColor} className='form-button save-color-button'>
+                delete
+              </button>
+            }
+
+
+
+
           </h4>
         </div>
 

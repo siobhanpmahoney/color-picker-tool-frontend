@@ -8,7 +8,7 @@ const ColorList = (props) => {
     return (
       <div className='color-list-wrapper'>
         {props.colors.map((color) => {
-          return <ColorEntry color={color} key={color.id} onUpdateColor={props.onUpdateColor}/>
+          return <ColorEntry color={color} key={color.id} onDeleteColor={props.onDeleteColor} onUpdateColor={props.onUpdateColor}/>
         })}
 
       </div>

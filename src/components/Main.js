@@ -1,7 +1,7 @@
 import React from 'react'
 import Form from './Form'
 import ColorList from './ColorList'
-import {fetchColors, createColor, updateColor} from '../service'
+import {fetchColors, createColor, updateColor, deleteColor} from '../service'
 
 class Main extends React.Component {
 
@@ -34,7 +34,7 @@ class Main extends React.Component {
   }
 
   onUpdateColor = (color_data) => {
-    
+
     let colorState = this.state.colors.slice(0)
     updateColor(color_data)
     .then(json => {
@@ -42,6 +42,18 @@ class Main extends React.Component {
 
       this.setState({
         colors: [...colorState.slice(0, idx), json,...colorState.slice(idx+1)]
+      })
+    })
+  }
+
+  onDeleteColor = (color_data) => {
+    let colorState = this.state.colors.slice(0)
+    deleteColor(color_data)
+    .then(json => {
+      console.log("json after delete")
+      let idx = colorState.indexOf(colorState.find((c) => c.id === color_data.id))
+      this.setState({
+        colors: [...colorState.slice(0, idx),...colorState.slice(idx+1)]
       })
     })
   }
@@ -83,7 +95,7 @@ class Main extends React.Component {
         {!this.state.colors ? (
           <div>Loading...</div>
         ) : (
-          <ColorList onUpdateColor={this.onUpdateColor} colors={this.state.colors} />
+          <ColorList onDeleteColor={this.onDeleteColor} onUpdateColor={this.onUpdateColor} colors={this.state.colors} />
         )}
       </div>
     )
