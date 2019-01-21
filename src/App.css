@@ -65,16 +65,32 @@ html, body {
   font-size: 80%;
 }
 
-button.color-edit-button {
+button.color-edit.button {
+    display: none;
+}
 
+button.color-edit-button, .form-close-button {
   background: white;
-  display: none;
-  border: #246EFF 1px solid;
-  color: #246EFF;
+  border: lightgrey 1px solid;
+  color: grey;
 }
 
 .color-entry-wrapper:hover button.color-edit-button {
   display:inline;
+}
+
+.save-color-button {
+  background: #0FC190;
+  border: #0FC190 1.25px solid;
+  color: white;
+  font-weight: 450;
+}
+
+.delete-color-button {
+  background: #FF6280;
+  border: #FF6280 1.25px solid;
+  color: white;
+  font-weight: 450;
 }
 
 .save-color-button, .color-edit-button, .delete-color-button, .form-close-button {
