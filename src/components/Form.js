@@ -40,9 +40,25 @@ class Form extends React.Component {
     this.props.onDeleteColor(this.state)
   }
 
+  onClearAndCloseForm = () => {
+    this.setState({
+      id: null,
+      hex: "",
+      starred: false,
+      group: "",
+      as_gradient: false,
+      website_placement: "",
+      status: "",
+      notes: ""
+    }, this.props.onToggleForm)
+  }
+
   render() {
     return (
       <div className='form-container'>
+        <button onClick={this.onClearAndCloseForm}>
+          close
+        </button>
         <h3 className='form-header'>Add New Color </h3>
         <div className='form-wrapper'>
           <div className='field'>

@@ -78,7 +78,7 @@ class Main extends React.Component {
 
 
         {!!this.state.isRenderingForm ? (
-          <Form color="new" onSaveColor={this.onCreateColor}/>
+          <Form color="new" onToggleForm={this.onToggleForm} onSaveColor={this.onCreateColor}/>
         ) : (
           <div className='header'>
             <h4>
