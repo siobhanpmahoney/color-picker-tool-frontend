@@ -1,5 +1,5 @@
-const index_url = 'http://localhost:3000/api/v1/colors'
-const color_url = (id) => `http://localhost:3000/api/v1/colors/${id}`
+const index_url = 'https://color-picker-tool-server.herokuapp.com/api/v1/colors'
+const color_url = (id) => `https://color-picker-tool-server.herokuapp.com/api/v1/colors/${id}`
 
 export const fetchColors = () => {
   return fetch(index_url)
@@ -20,7 +20,7 @@ export const createColor = (data) => {
 }
 
 export const updateColor = (data) => {
-  let url = `http://localhost:3000/api/v1/colors/${data.id}`
+  let url = `https://color-picker-tool-server.herokuapp.com/api/v1/colors/${data.id}`
   return fetch(url, {
     method: 'PATCH',
     headers: {
