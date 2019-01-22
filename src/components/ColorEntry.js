@@ -36,6 +36,8 @@ class ColorEntry extends React.Component {
     return (
       <div className='color-entry-wrapper'>
 
+        <div className='color-entry-info'>
+
         <div className='color-star'>
           {!!color.starred ? (
             <i className="material-icons">
@@ -54,10 +56,10 @@ class ColorEntry extends React.Component {
 
 
 
-          <div className='color-hex'>
-            {color.hex}
-          </div>
-  
+        <div className='color-hex'>
+          {color.hex}
+        </div>
+
 
 
         <div className='color-group'>
@@ -72,19 +74,24 @@ class ColorEntry extends React.Component {
           <span className={color.status}>{color.status}</span>
         </div>
 
-        {!this.state.isRenderingForm ? (
+        <div className='color-notes'>
+          {color.notes}
+        </div>
+
+        {!this.state.isRenderingForm &&
           <div className='color-edit'>
             <button className='color-edit-button' onClick={this.onToggleForm}>
               edit
             </button>
           </div>
-        ) : (
+        }
+</div>
+{!!this.state.isRenderingForm &&
           <div className='color-entry-form-container'>
             <Form onToggleForm={this.onToggleForm} onSaveColor={this.props.onUpdateColor} onDeleteColor={this.props.onDeleteColor} color={color}/>
           </div>
-        )
+        }
 
-      }
     </div>
   )
 }

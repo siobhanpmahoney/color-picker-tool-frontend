@@ -84,6 +84,17 @@ html, body {
   height: 100%;
   weight: 100%;
   display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  /* flex: 1 1 auto;
+  flex-flow: row wrap */
+}
+
+.color-entry-info {
+  position: relative;
+  height: 100%;
+  weight: 100%;
+  display: flex;
   /* flex-direction: column; */
   flex: 1 1 auto;
   flex-flow: row wrap
@@ -93,29 +104,48 @@ html, body {
   position: relative;
   width: 100%;
   display: flex;
-  margin: 6px;
-  padding: 12px 0px 4px 0px;
+  margin: 3px;
+  padding: 8px 0px 8px 0px;
   border-bottom: 1px solid lightslategray;
-  align-items: center;
-  flex-flow: row wrap;
+  align-items: space-around;
+  justify-content: space-around;
+  align-self: center;
+  align-content: center;
+  flex-flow: column wrap;
+  flex: 1 1 auto;
+  min-width: 200px;
 }
 
-.color-star, .color-square, .color-hex, .color-group, .color-website-placement {
+
+
+.color-star, .color-square, .color-hex, .color-group, .color-status, .color-website-placement, .color-notes {
   position: relative;
   display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-self: center;
   /* align-items: flex-start; */
 }
 
 .color-star, .color-square {
-  margin: 0px 18px;
+  margin: 0px 6px;
 }
 
 .color-hex, .color-group, .color-website-placement, .color-status, .color-edit {
-  min-width: 15px;
-  max-width: 30%;
+    min-width: 15px;
+}
+
+.color-hex, .color-group, .color-website-placement, .color-status, .color-edit, .color-notes {
+  width: 30%;
   flex: 0 1 10%;
-  margin: 0px 12px;
-  font-size: 80%;
+  margin: 0px 6px;
+  font-size: 85%;
+
+}
+
+.color-notes {
+  min-width: 50px;
+
 }
 
 
@@ -126,6 +156,10 @@ html, body {
   padding: 6px;
   border-radius: 4px;
   margin: 0px 4px;
+  display: inline-flex;
+  flex: 1 1 auto;
+  min-width: 30px;
+  max-width: 50px;
 }
 
 .color-entry-form-container {
