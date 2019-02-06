@@ -3,6 +3,7 @@ import ControlPanel from './ControlPanel'
 import Form from './Form'
 import ColorList from './ColorList'
 import {fetchColors, createColor, updateColor, deleteColor} from '../service'
+import colors, {color_map} from 'hex-to-color-name'
 
 class Main extends React.Component {
 
@@ -29,6 +30,30 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.onFetchColors()
+    console.log(colors('#1EFB6A', color_map))
+    this.startInterval()
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+
+
+
+  onRandomGenerateColor = () => {
+    let hexVals = ["0", "1", "2", "3", "4", "5", "6", "A", 'B', "C", "D", "E", "F"]
+    let hexItem = "#"
+    let i = 0
+    while (i < 6) {
+      hexItem += hexVals[Math.floor(Math.random()*hexVals.length)]
+      i++
+    }
+
+    this.onCreateColor({hex: hexItem, starred: false, group: colors(hexItem, color_map),as_gradient: false, status: "considering"})
+  }
+
+  startInterval = () => {
+    this.interval = setInterval(this.onRandomGenerateColor, 8000)
   }
 
 
